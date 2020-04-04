@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name" translatable="false">AutonomiaTotalComMVC</string>
+    <string name="text_carroNome">Nome do Carro</string>
+    <string name="hint_nomeCarro">Digite o nome do carro</string>
+    <string name="text_kmPercorrida">Km Percorrida</string>
+    <string name="hint_kmPercorrida">Quantos km você percorreu?</string>
+    <string name="text_qtdCombustivel">Quantidade de Combustivel</string>
+    <string name="hint_qtdCombustivel">Quanto combustivel foi gasto?</string>
+    <string name="text_calcular">Calcular</string>
+    <string name="text_limparDados">Limpar Dados</string>
+    <string name="text_consumoMedioFrota">"Consumo Médio da Frota: "</string>
+    <string name="required_nomeCarro">Nome do carro é um campo obrigatório</string>
+    <string name="required_kmPercorrido">Km Percorrida é um campo obrigatório</string>
+    <string name="required_combustivelGasto">Combustivel gasto é um campo obrigatório</string>
+</resources>
