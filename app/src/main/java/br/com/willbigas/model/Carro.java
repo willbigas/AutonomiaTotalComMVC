@@ -1,5 +1,7 @@
 package br.com.willbigas.model;
 
+import br.com.willbigas.util.DecimalFormat;
+
 public class Carro {
 
     private Integer id;
@@ -64,5 +66,10 @@ public class Carro {
 
     public void setConsumoMedio(Double consumoMedio) {
         this.consumoMedio = consumoMedio;
+    }
+
+    @Override
+    public String toString() {
+        return "Carro " + id + " - " + DecimalFormat.deDecimalParaString(consumoMedio) + " km/L";
     }
 }

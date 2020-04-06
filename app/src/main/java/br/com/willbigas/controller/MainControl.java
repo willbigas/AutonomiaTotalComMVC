@@ -1,9 +1,11 @@
 package br.com.willbigas.controller;
 
 import android.view.Gravity;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.willbigas.R;
 import br.com.willbigas.model.Carro;
@@ -19,6 +21,8 @@ public class MainControl {
 
     private CarroService carroService;
     private FrotaService frotaService;
+    private ArrayAdapter<Carro> carroAdapter;
+    private List<Carro> carros;
 
     private Carro carro;
     private Frota frota;
@@ -29,7 +33,14 @@ public class MainControl {
         this.mainActivity = mainActivity;
         inicializarFrota();
         inicializarServices();
+        inicializarAdapter();
         indiceDeQuantidadeDeCarros = 1;
+    }
+
+    public void inicializarAdapter() {
+        carros = new ArrayList<>();
+        carroAdapter = new ArrayAdapter<>(mainActivity, android.R.layout.simple_list_item_1, carros);
+        mainActivity.getLvCarros().setAdapter(carroAdapter);
     }
 
     private void inicializarFrota() {
@@ -46,6 +57,7 @@ public class MainControl {
             receberDadosDaView();
             carro = carroService.calcular(carro);
             frota = frotaService.calcular(frota);
+            adicionar(carro);
             exibirDadosNaView();
             limparDados();
         }
@@ -56,6 +68,10 @@ public class MainControl {
         mainActivity.getEdtKmPercorrida().setText("");
         mainActivity.getEdtQuantidadeCombustivel().setText("");
         carro = new Carro();
+    }
+
+    public void adicionar(Carro carro) {
+        carroAdapter.add(carro);
     }
 
     private boolean validarDadosDaView() {
@@ -86,10 +102,7 @@ public class MainControl {
 
 
     private void exibirDadosNaView() {
-        TextView tvCarroDinamico = new TextView(mainActivity);
-        tvCarroDinamico.setGravity(Gravity.CENTER);
-        tvCarroDinamico.setText("Carro" + carro.getId() + " - " + DecimalFormat.deDecimalParaString(carro.getConsumoMedio()) + " km/L");
-        mainActivity.getLayoutTabelaCarros().addView(tvCarroDinamico);
+//        tvCarroDinamico.setText("Carro" + carro.getId() + " - " + DecimalFormat.deDecimalParaString(carro.getConsumoMedio()) + " km/L");
         mainActivity.getTvConsumoMedioFrota().setText(DecimalFormat.deDecimalParaString(frota.getConsumoMedioDaFrota()) + " km/L");
 
     }

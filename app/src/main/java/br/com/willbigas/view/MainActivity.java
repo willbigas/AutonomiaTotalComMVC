@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import br.com.willbigas.R;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvConsumoMedioFrota;
 
     private LinearLayout layoutTabelaCarros;
+    private ListView lvCarros;
 
 
     @Override
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         tvConsumoMedioFrota = findViewById(R.id.tvConsumoMedioFrota);
 
         layoutTabelaCarros = findViewById(R.id.layoutTabelaCarros);
+        lvCarros = findViewById(R.id.lvCarros);
     }
 
     private void listenerCalcular() {
@@ -96,5 +99,13 @@ public class MainActivity extends AppCompatActivity {
 
     public LinearLayout getLayoutTabelaCarros() {
         return layoutTabelaCarros;
+    }
+
+    public ListView getLvCarros() {
+        return lvCarros;
+    }
+
+    public void setLvCarros(ListView lvCarros) {
+        this.lvCarros = lvCarros;
     }
 }
